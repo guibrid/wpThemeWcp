@@ -52,7 +52,7 @@ if (strpos($pageUrl, 'download')){
                 echo '<div class="row">';
                 while ( $my_query->have_posts() ) : $my_query->the_post();
                     //var_dump($my_query);
-                    echo '<div class="col-lg-2"><a href="/download" title="Download schedule">';
+                    echo '<div class="col-lg-3"><a href="/download" title="Download schedule">';
                     echo "<span class='content'>Ex ".get_field( "origin" )." to ".get_field( "destination" )."<span class='type'>".get_field( "type" )."</span></span>"; 
                     echo "</a></div>";
                 endwhile;
