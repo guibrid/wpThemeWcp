@@ -29,4 +29,30 @@ add_action('wp_enqueue_scripts', 'custom_scripts_method');
  */
 require_once locate_template( '/inc/ct_and_cpt.php' );
 
-?>
+
+
+/**
+ * Schedule redirection to pdf
+ */
+function schedule_redirect() {
+  
+  if ( strpos($_SERVER["REQUEST_URI"], "wcp-schedules")){
+
+    if (explode("/wcp-schedules/",$_SERVER["REQUEST_URI"])){
+
+      $url = explode("/wcp-schedules/",$_SERVER["REQUEST_URI"]);
+      $scheduleId = preg_replace("/[^0-9]/", "", $url[1] );
+
+      if ( isset($url[1]) && !empty( $scheduleId )){
+        $schedule = get_field('schedule_file', $scheduleId);
+        wp_redirect( $schedule );
+        exit;
+      } 
+
+    }
+
+  }
+
+} 
+
+add_action ('wp_loaded', 'schedule_redirect');

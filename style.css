@@ -3,6 +3,11 @@ Theme Name: World Crago Pacific
 Template: dt-the7
 */
 
+/** GENERAL **/
+#main {
+    padding-bottom: 0px;
+}
+
 /** Home page **/
 div.pacificSpecialistBlock, div.technologyUsed {
     background-position: right !important;
@@ -14,15 +19,29 @@ div.pacificSpecialistBlock, div.technologyUsed {
     .technoUsedContent {
         background-color: rgba(0, 0, 0, 0.7)
     }
-  }
+}
 
+/** Contact page **/
+.wcpContactForm input[type="text"], .wcpContactForm input[type="email"], .wcpContactForm input[type="tel"] {
+    width: 100% !important;
+    padding: 25px 15px;
+}
 
+.wpb_gmaps_widget {
+    margin-bottom:0px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.wpb_gmaps_widget .wpb_wrapper {
+    padding: 0;
+}
 
 /******
 Schedule page
 ******/
 div.schedule-container a {
-    margin: 5px;
+    margin: 0px;
     padding: 5px;
     display: block;
     text-decoration: none;

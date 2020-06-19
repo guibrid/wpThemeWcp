@@ -44,19 +44,14 @@ if (strpos($pageUrl, 'download')){
             $my_query = new WP_Query( $args ); 
 
             if ($my_query->have_posts()) {
-                //var_dump($my_query->found_posts);
-                //loop_columns
-                // https://gist.github.com/cp6/e3edb35794521a8d2f08cad4f3b1e450 
                 echo '<h3>'.$term->name."</h3>";
-                echo '<div class="schedule-container container">';
-                echo '<div class="row">';
+                echo '<div class="schedule-container">';
                 while ( $my_query->have_posts() ) : $my_query->the_post();
-                    //var_dump($my_query);
-                    echo '<div class="col-lg-3"><a href="/download" title="Download schedule">';
+
+                    echo '<div><a href="/wcp-schedules/'.$post->ID.'" title="Download schedule '.$post->post_title.'" target="_blank">';
                     echo "<span class='content'>Ex ".get_field( "origin" )." to ".get_field( "destination" )."<span class='type'>".get_field( "type" )."</span></span>"; 
                     echo "</a></div>";
                 endwhile;
-                echo '</div>';
                 echo '</div>';
             }
 
