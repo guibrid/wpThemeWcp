@@ -29,7 +29,10 @@ add_action('wp_enqueue_scripts', 'custom_scripts_method');
  */
 require_once locate_template( '/inc/ct_and_cpt.php' );
 
-
+/**
+ * Custom widgets
+ */
+require_once locate_template( '/inc/widgets.php' );
 
 /**
  * Schedule redirection to pdf
@@ -56,3 +59,36 @@ function schedule_redirect() {
 } 
 
 add_action ('wp_loaded', 'schedule_redirect');
+
+
+// Add query var
+function add_query_vars_filter( $vars ){
+  $vars[] = "areas";
+  return $vars;
+}
+add_filter( 'query_vars', 'add_query_vars_filter' );
+
+
+
+// Add schedules widgets search
+add_action( 'wp_loaded', 'wpse_76959_register_widget_area' );
+function wpse_76959_register_widget_area()
+{
+    register_sidebar(
+        array (
+            'name'          => __(
+                'Schedule page sidebar',
+                'theme_textdomain'
+                ),
+            'description'   => __(
+                'Will be used on a page with a slug "wcp-schedules" only.',
+                'theme_textdomain'
+                ),
+            'id'            => 'wcp-schedules',
+            'before_widget' => '<div id="wcp-schedules-widget">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>',
+        )
+    );
+}

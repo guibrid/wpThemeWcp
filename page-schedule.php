@@ -14,14 +14,16 @@ if (strpos($pageUrl, 'download')){
 ?>
 
 <div class="schedules-bloc">
+test
 <?php 
 
-    $term_args = [
-        'orderby' => 'name',
-        'order' => 'ASC'
-    ];
 
-    $terms = get_terms('area',$term_args);
+$term_args = [
+    'orderby' => 'name',
+    'order' => 'ASC',
+    'search' => get_query_var('area')
+];
+$terms = get_terms('area',$term_args);
 
     if ($terms) {
 
