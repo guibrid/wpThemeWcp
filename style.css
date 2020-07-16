@@ -40,27 +40,44 @@ div.pacificSpecialistBlock, div.technologyUsed {
 /******
 Schedule page
 ******/
+div.schedules-bloc {
+    margin-bottom: 45px;
+}
+
+div.schedules-bloc h3{
+    font-size: 20px;
+    color:#145DA1;
+
+}
 div.schedule-container a {
-    margin: 0px;
-    padding: 5px;
+    margin: 5px 0;
+    padding: 5px 10px;
     display: block;
     text-decoration: none;
-    background: url('img/icon-download-schedule.png') no-repeat bottom right;
+    background: url('img/icon-download-schedule.png') no-repeat center right;
+    border-left: 4px solid rgba(0, 113, 188, 1);
+    font-size: 13px;
 }
 div.schedule-container a:hover {
     background-color:   rgba(247, 247, 247, 1)
 }
 
-div.schedule-container span.content {
-    border-left: 4px solid rgba(0, 113, 188, 1);
-    display: block;
-    padding-left: 5px;
-    font-size: 13px;
+div.schedule-container a p {
+    line-height: 1;
+    margin-bottom: 0;
 }
 
 div.schedule-container span.type {
     font-size: 10px;
-    display: block;
-    border-top:1px solid rgba(230, 230, 230, 1);
     color: rgba(153, 153, 153, 1);
+}
+
+div.schedulesAreaLink li {
+    text-transform: uppercase;
+    border-bottom: 1px solid #CCCCCC;
+}
+div.schedulesAreaLink li a {
+    padding: 7px 0;
+    display: block;
+    text-decoration: none;
 }

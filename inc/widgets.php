@@ -20,18 +20,20 @@ function __construct() {
   
 // Creating widget front-end
 public function widget( $args, $instance ) {
+
+    echo '<div class="schedulesAreaLink"><h3>Schedules by areas</h3>';
     $terms = get_terms( array(
         'taxonomy' => 'area',
         'hide_empty' => true,
     ) );
     
-    //var_dump($terms);
     echo '<ul>';
+    echo '<li><a href="'. get_site_url().'/wcp-schedules/'.'">All areas</a></li>';
     foreach ($terms as $term)
     {
-        echo '<li><a href="'.add_query_arg( 'area', $term->slug, 'https://cargo.worldlinkadvance.com/wcp-schedules/' ).'">'.$term->name.'</a></li>';
+        echo '<li><a href="'.add_query_arg( 'area', $term->slug, get_site_url().'/wcp-schedules/' ).'">'.$term->name.'</a></li>';
     }
-    echo '</ul>';
+    echo '</ul></div>';
 }
           
 // Creating widget Backend 

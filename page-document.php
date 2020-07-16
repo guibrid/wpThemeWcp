@@ -1,4 +1,4 @@
-<?php /* Template Name: Page Schedule */ ?>
+<?php /* Template Name: Page Document*/ ?>
 
 <?php get_header(); ?>
 
