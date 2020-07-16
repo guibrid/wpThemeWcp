@@ -65,5 +65,67 @@ function custom_tax_cpt() {
 	register_taxonomy('area', array( 'schedule' ), $args_area); // register CT
 	
 	// schedule taxonomy and CPT end
+
+	// Document taxonomy and CPT start
+
+	$labels_document = [
+		'name'				 => __( 'Documents' ),
+		'singular_name' 	 => __( 'Document' ),
+		'add_new'            => __( 'Add New'),
+		'add_new_item'       => __( 'New document'),
+		'edit_item'          => __( 'Edit document'),
+		'new_item'           => __( 'New document'),
+		'all_items'          => __( 'All documents'),
+		'view_item'          => __( 'View document'),
+		'search_items'       => __( 'Search documents'),
+		'not_found'          =>  __( 'No document found'),
+		'not_found_in_trash' => __( 'No document found in Trash'), 
+		'parent_item_colon'  => '',
+		'menu_name'          => __( 'Document')
+	];
+
+	$args_document = [
+		'labels'             => $labels_document,
+		'public' 			 => true,
+		'has_archive' 		 => true,
+		'publicly_queryable' => true,
+		'show_ui'            => true, 
+		'show_in_menu'       => true, 
+		'query_var'          => true,
+		'has_archive'        => true,
+		'rewrite' 			 => array('slug' => 'documents'),
+		'menu_position'      => 4,
+		'menu_icon'			 => 'dashicons-admin-page',
+		'supports' => array( 'title', 'custom-fields' ),
+	];
+
+	register_post_type( 'document', $args_document ); // register CP
+
+	$label_typeDoc = [
+		'name' 				 => __('Types'),
+		'singular_name' 	 => __( 'Type'),
+		'search_items' 		 =>  __( 'Search types' ),
+		'all_items' 		 => __( 'All types' ),
+		'parent_item' 		 => __( 'Parent type' ),
+		'parent_item_colon'  => __( 'Parent type:' ),
+		'edit_item' 		 => __( 'Edit type' ), 
+		'update_item' 		 => __( 'Update type' ),
+		'add_new_item' 		 => __( 'Add New type' ),
+		'new_item_name' 	 => __( 'New Type type' ),
+		'menu_name' 		 => __( 'Types' ),
+	];
+
+	$args_typeDoc = [
+		'hierarchical' => true,
+		'labels' => $label_typeDoc,
+		'show_ui' => true,
+		'show_admin_column' => true,
+		'query_var' => true,
+		'rewrite' => array( 'slug' => 'typeDoc' ),
+	];
+
+	register_taxonomy('typeDoc', array( 'document' ), $args_typeDoc); // register CT
+	
+	// schedule taxonomy and CPT end
 }
 add_action( 'init', 'custom_tax_cpt' );

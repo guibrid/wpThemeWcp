@@ -64,6 +64,7 @@ add_action ('wp_loaded', 'schedule_redirect');
 // Add query var
 function add_query_vars_filter( $vars ){
   $vars[] = "areas";
+  $vars[] = "typedoc";
   return $vars;
 }
 add_filter( 'query_vars', 'add_query_vars_filter' );
@@ -90,5 +91,23 @@ function wpse_76959_register_widget_area()
             'before_title'  => '<h2>',
             'after_title'   => '</h2>',
         )
+    );
+
+    register_sidebar(
+      array (
+          'name'          => __(
+              'Document page sidebar',
+              'theme_textdomain'
+              ),
+          'description'   => __(
+              'Will be used on a page with a slug "wcp-documents" only.',
+              'theme_textdomain'
+              ),
+          'id'            => 'wcp-documents',
+          'before_widget' => '<div id="wcp-documents-widget">',
+          'after_widget'  => '</div>',
+          'before_title'  => '<h2>',
+          'after_title'   => '</h2>',
+      )
     );
 }

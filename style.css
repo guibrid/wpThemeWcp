@@ -81,3 +81,12 @@ div.schedulesAreaLink li a {
     display: block;
     text-decoration: none;
 }
+
+/** DOCUMENT PAGE */
+ul.typedoc_list ul {
+    margin-left: 10px;
+}
+
+ul.typedoc_list ul ul{
+    margin-left: 10px;
+}
