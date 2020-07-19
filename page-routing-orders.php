@@ -1,4 +1,4 @@
-<?php /* Template Name: Page Schedule */ ?>
+<?php /* Template Name: Page Routing orders*/ ?>
 
 <?php get_header(); ?>
 
@@ -19,9 +19,9 @@ if (strpos($pageUrl, 'download')){
 $term_args = [
     'orderby' => 'name',
     'order' => 'ASC',
-    'search' => get_query_var('area')
+    'search' => get_query_var('typedoc')
 ];
-$terms = get_terms('area',$term_args);
+$terms = get_terms('typeDoc',$term_args);
 
     if ($terms) {
 
@@ -29,12 +29,12 @@ $terms = get_terms('area',$term_args);
            
 
             $args = [
-                'post_type' => 'schedule',
+                'post_type' => 'document',
                 'post_status' => 'publish',
                 'posts_per_page' => '100',
                 'tax_query' => [
                     [
-                        'taxonomy' => 'area',
+                        'taxonomy' => 'typeDoc',
                         'terms' => array($term->term_id),
                         'include_children' => true,
                         'operator' => 'IN'
@@ -48,9 +48,9 @@ $terms = get_terms('area',$term_args);
                 echo '<h3>'.$term->name."</h3>";
                 echo '<div class="schedule-container">';
                 while ( $my_query->have_posts() ) : $my_query->the_post();
-
-                    echo '<div><a href="/wcp-schedules/'.$post->ID.'" title="Download schedule '.$post->post_title.'" target="_blank">';
-                    echo "<p>Ex ".get_field( "origin" )." to ".get_field( "destination" )."<br /><span class='type'>".get_the_title()."</span></p>"; 
+                    $doc = get_field('document');
+                    echo '<div><a href="'.$doc['url'].'" title="Download this document" target="_blank">';
+                    echo "<p>".get_the_title( )."<br /><span class='type'>Size: ".$doc['filesize']."</span></p>"; 
                     echo "</a></div>";
                 endwhile;
                 echo '</div>';

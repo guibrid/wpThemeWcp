@@ -97,6 +97,7 @@ function custom_tax_cpt() {
 		'menu_position'      => 4,
 		'menu_icon'			 => 'dashicons-admin-page',
 		'supports' => array( 'title', 'custom-fields' ),
+		'taxonomies' => array('post_tag'),
 	];
 
 	register_post_type( 'document', $args_document ); // register CP

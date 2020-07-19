@@ -8,6 +8,14 @@ Template: dt-the7
     padding-bottom: 0px;
 }
 
+div.wf-container-footer {
+    display: none;
+}
+
+div.wf-container-main {
+    margin-bottom: 45px;
+}
+
 /** Home page **/
 div.pacificSpecialistBlock, div.technologyUsed {
     background-position: right !important;
@@ -84,9 +92,18 @@ div.schedulesAreaLink li a {
 
 /** DOCUMENT PAGE */
 ul.typedoc_list ul {
-    margin-left: 10px;
+    margin-left: 20px;
 }
 
-ul.typedoc_list ul ul{
-    margin-left: 10px;
+ul.typedoc_list a {
+    border-bottom:1px solid rgba(204, 204, 204, 0.4);
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+/** BLOG Page */
+div.blog-content div.entry-meta a.author,
+div.blog-content div.entry-meta a.comment-link {
+    display: none;
 }

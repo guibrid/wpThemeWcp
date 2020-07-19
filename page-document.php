@@ -31,6 +31,7 @@ $terms = get_terms('typeDoc',$term_args);
             $args = [
                 'post_type' => 'document',
                 'post_status' => 'publish',
+                'posts_per_page' => '100',
                 'tax_query' => [
                     [
                         'taxonomy' => 'typeDoc',
