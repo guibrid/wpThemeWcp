@@ -70,6 +70,13 @@ function add_query_vars_filter( $vars ){
 add_filter( 'query_vars', 'add_query_vars_filter' );
 
 
+// Password page protection coockie timeout
+function wpse166590_cockie_timeout($timeout) {
+  return time() + 5 * 60; // 5 minute in seconds
+}
+add_filter('post_password_expires','wpse166590_cockie_timeout');
+
+
 
 // Add schedules widgets search
 add_action( 'wp_loaded', 'wpse_76959_register_widget_area' );

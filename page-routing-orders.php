@@ -3,14 +3,10 @@
 <?php get_header(); ?>
 
 <?php
-/*global $post;
-$pageUrl = get_permalink();
-var_dump($pageUrl);
-var_dump(get_the_ID());
-if (strpos($pageUrl, 'download')){
-    wp_redirect( home_url() . '/login' );
-    exit;
-}*/
+global $post;
+if ( ! post_password_required( $post ) ) {
+    // Your custom code should here
+
 ?>
 
 <div class="schedules-bloc">
@@ -33,12 +29,19 @@ $terms = get_terms('typeDoc',$term_args);
                 'post_status' => 'publish',
                 'posts_per_page' => '100',
                 'tax_query' => [
+                    'relation' => 'AND',
                     [
                         'taxonomy' => 'typeDoc',
                         'terms' => array($term->term_id),
                         'include_children' => true,
                         'operator' => 'IN'
-                    ]
+                    ],
+                    array(
+                        'taxonomy' => 'post_tag',
+                        'field'    => 'slug',
+                        'terms'    => 'protected',
+                        'operator' => 'IN',
+                    ),
                 ],
             ];
 
@@ -64,6 +67,11 @@ $terms = get_terms('typeDoc',$term_args);
 
 ?>
 </div>
-<?php get_sidebar(); ?>
+<?php get_sidebar(); 
+}else{
+    // we will show password form here
+    echo get_the_password_form();
+  }
+?>
 
 <?php get_footer(); ?>

@@ -70,11 +70,21 @@ class documentType_widget extends WP_Widget {
     
     // Creating widget front-end
     public function widget( $args, $instance ) {
-
+        global $post;
+        if ($post->post_name == 'wcp-documents') { 
+            $exclude = '20'; 
+        } 
+        else {
+            $exclude = '16';
+        };
         echo '<div><h3>Document types</h3>';
         ?>
         <ul class="typedoc_list">
-    <?php $hiterms = get_terms(array('taxonomy' => "typeDoc", "orderby" => "slug", "parent" => 0)); ?>
+    <?php 
+        $hiterms = get_terms(array('taxonomy' => "typeDoc", 
+                                   "orderby" => "slug", 
+                                   "parent" => 0,
+                                   'exclude' => $exclude)); ?>
     <?php foreach($hiterms as $key => $hiterm) : ?>
         <li>
             <a href="<?php echo add_query_arg( 'typedoc', $hiterm->slug, get_site_url().'/wcp-documents/' ); ?>"><?php echo $hiterm->name; ?></a>

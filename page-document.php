@@ -33,12 +33,19 @@ $terms = get_terms('typeDoc',$term_args);
                 'post_status' => 'publish',
                 'posts_per_page' => '100',
                 'tax_query' => [
+                    'relation' => 'AND',
                     [
                         'taxonomy' => 'typeDoc',
                         'terms' => array($term->term_id),
                         'include_children' => true,
                         'operator' => 'IN'
-                    ]
+                    ],
+                    array(
+                        'taxonomy' => 'post_tag',
+                        'field'    => 'slug',
+                        'terms'    => 'protected',
+                        'operator' => 'NOT IN',
+                    ),
                 ],
             ];
 
