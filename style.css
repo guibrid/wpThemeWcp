@@ -8,13 +8,25 @@ Template: dt-the7
     padding-bottom: 0px;
 }
 
-div.wf-container-footer {
-    display: none;
+#icl_lang_sel_widget-2 {
+    margin-bottom: 0;
 }
 
-div.wf-container-main {
-    margin-bottom: 45px;
+#icl_lang_sel_widget-2 .wpml-ls-sidebars-sidebar_2 {
+    text-align: center;
 }
+
+#icl_lang_sel_widget-2 .wpml-ls-sidebars-sidebar_2 ul {
+    display: inline-block;
+}
+
+#bottom-bar .wf-wrap {
+    text-align: center;
+}
+#bottom-bar .wf-wrap .wf-container-bottom {
+    display: inline-block;
+}
+
 
 /** Home page **/
 div.pacificSpecialistBlock, div.technologyUsed {
