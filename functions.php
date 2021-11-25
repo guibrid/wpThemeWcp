@@ -118,3 +118,44 @@ function wpse_76959_register_widget_area()
       )
     );
 }
+
+
+add_action( 'wp_head', 'dt_the7_child_head', 1 );
+/**
+ * Prints the Google Tag Manager <head> script
+ */
+function dt_the7_child_head(){
+?>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NHTG8SK');</script>
+    <!-- End Google Tag Manager -->
+<?php
+}
+
+
+
+add_action( 'presscore_body_top', 'dt_the7_child_body_open', 1 );
+/**
+ * Prints the Google Tag Manager <body> script
+ */
+function dt_the7_child_body_open(){
+?>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NHTG8SK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+<?php
+}
+
+
+function shortcode_bienvenue(){
+
+
+
+  echo "<h2>Bienvenue!</h2>";
+}
+add_shortcode('bienvenue', 'shortcode_bienvenue');
